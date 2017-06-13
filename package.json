@@ -1,0 +1,37 @@
+{
+  "name": "animal_awareness",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaliniPillai/Animal_Awareness_final_Project-.git"
+  },
+  "author": "dalini",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DaliniPillai/Animal_Awareness_final_Project-/issues"
+  },
+  "homepage": "https://github.com/DaliniPillai/Animal_Awareness_final_Project-#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.3",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.3",
+    "express-session": "^1.15.3",
+    "jest": "^20.0.4",
+    "method-override": "^2.3.9",
+    "morgan": "^1.8.2",
+    "node-sass": "^4.5.3",
+    "nodemon": "^1.11.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "pg-promise": "^5.9.3"
+  }
+}
