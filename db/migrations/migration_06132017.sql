@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS animals (
   id BIGSERIAL PRIMARY KEY,
   animal_type VARCHAR(255),
-  animal_pic VARCHAR(255),
+  animal_pic_url VARCHAR(255),
   animal_info VARCHAR(255)
   
 );
