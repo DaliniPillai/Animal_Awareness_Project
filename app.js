@@ -30,10 +30,17 @@ app.get('/', function(req, res) {
   res.sendFile(__dirname + '/public/index.html');
 });
 
-/*importing the petFinderHelper function for the search view */ 
-/* events API route */
-const petFinderRoutes = require('./routes/petFinderRoutes');
-app.use('/api/petFinder', petFinderRoutes);
+/*importing the petFinderHelper function for the search view */
+const petFinderHelpers = require('./services/petFinder/petFinderHelpers'); 
+/*animal and stories routes route*/
+const animalsRoutes = require('./routes/animalsRoutes');
+app.use('/animals', animalRoutes);
+
+const stories = require('./routes/storiesRoutes');
+app.use('/stories', storiesRoutes);
+
+
+
 
 
 
