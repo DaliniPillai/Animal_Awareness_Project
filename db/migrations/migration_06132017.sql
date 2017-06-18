@@ -1,22 +1,27 @@
-\connect animal_awareness_development
+\connect animal_awareness_development;
 
-DROP TABLE animals;
+DROP DATABASE IF EXISTS animal_awareness_development;
+CREATE DATABASE animal_awareness_development;
+DROP TABLE IF EXISTS stories;
+DROP TABLE IF EXISTS animals;
 
-CREATE TABLE animals (
+
+CREATE TABLE stories(
+  id BIGSERIAL PRIMARY KEY,
+  users varchar(255) NOT NULL,
+  content varchar(255) NOT NULL
+);
+
+
+CREATE TABLE animals(
   id BIGSERIAL PRIMARY KEY,
   animal_type VARCHAR(255),
   animal_pic_url VARCHAR(255),
-  animal_info VARCHAR(255)
+  animal_info VARCHAR(255),
+  stories_id INTEGER REFERENCES stories(id) 
 );
 
 
-DROP TABLE stories;
 
-CREATE TABLE stories (
-  id BIGSERIAL PRIMARY KEY,
-  users VARCHAR(255),
-  animals_id INTEGER REFERENCES animals(id),
-  story_title VARCHAR(255),
-  story_content TEXT
-);
+
 

@@ -8,12 +8,16 @@ console.log('test2');
 
 Animals.findAll = () => {
   return db.query(
-    `SELECT * FROM animals ORDER BY id ASC`
+    `SELECT animals.id, animal_type, animal_pic_url, animal_info
+    FROM animals
+    INNER JOIN stories 
+    ON animals.stories_id = stories.id`
   );
 };
 
 Animals.findById = id => {
-  return db.oneOrNone(`SELECT * FROM animals WHERE id = $1` , [id]);
+  return db.oneOrNone(`SELECT * FROM animals INNER JOIN stories 
+  ON animals.stories_id = stories.id WHERE animals.id = $1;` , [id]);
 };
 
 Animals.create = animals => {

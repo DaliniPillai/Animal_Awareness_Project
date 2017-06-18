@@ -1,7 +1,13 @@
 \connect animal_awareness_development
 
-INSERT INTO stories (users, animals_id, story_title, story_content) VALUES
-  ('Mary',2, '', ''),
-  ('Sam',3, '', ''),
-  ('Jacob',4, '', ''),
-  ('Daniel',3, '', '');  
+CREATE TABLE stories(
+  id BIGSERIAL PRIMARY KEY,
+  users varchar(255) NOT NULL,
+  content varchar(255) NOT NULL
+);
+
+INSERT INTO stories (users, content) VALUES
+  ('Mary', 'Hello World'),
+  ('Sam', 'Hello World'),
+  ('Jacob', 'Hello World'),
+  ('Daniel', 'Hello World');  
