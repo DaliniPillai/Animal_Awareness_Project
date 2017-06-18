@@ -1,40 +1,50 @@
-/* setting up express */
+//setting up the dependencies
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
-const cors = require('cors');
+const methodOverride = require('method-override');
 const app = express();
 
-/* setting up port & listen */
-const PORT = process.env.PORT || 3000;
+//importing routes
+const animalsRoutes = require('./routes/animalsRoutes');
+
+//setting up port
+
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, function() {
-  console.log('listening on port ${PORT}');
+  console.log(`listening on port ${PORT}`);
+
 });
+//setting up views 
+app.set('views', path.join(__dirname,'views'));
+app.set('view engine', 'ejs');
 
-/*setting up cors*/
-
-/* setting static file */
+//setting up static file
 app.use('/static', express.static(path.join(__dirname, 'public')));
-/* setting up cors */
-app.use(cors());
-/* setting up logger */
+
+//setting up logger 
 app.use(logger('dev'));
-/* setting up body parser */
+
+//setting up body parser 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(methodOverride('_method'));
 
-/* setting routes */
-/* ====================== INDEX ROUTE ========= */
-app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/public/index.html');
+// setting up routes
+app.get('/', function(req,res) {
+  res.render('index', {
+    message: 'Animal Awareness',
+    documentTitle: 'Animal Awareness',
+    showMore: true,
+  });
 });
+app.use('/animals', animalsRoutes);
 
 /*importing the petFinderHelper function for the search view */
-const petFinderHelpers = require('./services/petFinder/petFinderHelpers'); 
+//const petFinderHelpers = require('./services/petFinder/petFinderHelpers'); 
 /*animal and stories routes route*/
-const animalsRoutes = require('./routes/animalsRoutes');
-app.use('/animals', animalsRoutes);
+
 
 
 
