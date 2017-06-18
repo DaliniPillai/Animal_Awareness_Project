@@ -7,9 +7,9 @@ const cors = require('cors');
 const app = express();
 
 /* setting up port & listen */
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, function() {
-  console.log(`listening on port ${PORT}`);
+  console.log('listening on port ${PORT}');
 });
 
 /*setting up cors*/
@@ -34,12 +34,7 @@ app.get('/', function(req, res) {
 const petFinderHelpers = require('./services/petFinder/petFinderHelpers'); 
 /*animal and stories routes route*/
 const animalsRoutes = require('./routes/animalsRoutes');
-app.use('/animals', animalRoutes);
-
-const stories = require('./routes/storiesRoutes');
-app.use('/stories', storiesRoutes);
-
-
+app.use('/animals', animalsRoutes);
 
 
 

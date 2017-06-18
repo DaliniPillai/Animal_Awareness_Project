@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "db:migrate": "psql -f ./db/migrations/migration_06132017.sql && psql -f ./db/seeds/seed.sql",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

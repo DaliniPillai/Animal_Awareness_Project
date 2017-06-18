@@ -1,5 +1,5 @@
+\i ./db/seeds/animals.sql
+\i ./db/seeds/stories.sql
 
-\i stories.sql
-\i animal.sql
 
 
