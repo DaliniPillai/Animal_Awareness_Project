@@ -1,0 +1,36 @@
+
+body {background: #fcfcfc;}
+
+.spacer {
+    height: 1.3rem;
+    width: 100%;
+}
+
+p.grey.lighten-3.static-text.black-text {
+    padding: 1rem 1.5rem;
+    margin: 1em 0;
+}
+
+.grid-element-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 1rem;
+    margin: 0;
+    line-height: 2.8rem;
+    padding: 0 10px;
+    background-color: rgba(0,0,0,0.5);
+    width: 100%;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.addAnimalStory{padding: 0 20px;}
+
+.footer {
+    background: #ddd;
+    padding: .5rem 0;
+}
+
