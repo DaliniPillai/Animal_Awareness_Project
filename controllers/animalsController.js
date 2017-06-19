@@ -36,14 +36,14 @@ animalsController.create = (req, res) => {
     animal_type: req.body.animal_type,
     animal_pic_url: req.body.animal_pic_url,
     animal_info: req.body.animal_info,
-  })
-  .then(animal => {
-    console.log(animal);
+    content: req.body.content,
+    animals_id: req.body.animal_id,
+  }).then(animal=>{
     res.redirect('/animals');
   })
-  .catch(err => {
-    res.status(400).json(err);
-  });
+  // could not figure this out, pls halp
+  
+  
 };
 
 
@@ -52,10 +52,11 @@ animalsController.edit = (req,res) => {
   Animals.findById(req.params.id)
   .then(animals => {
     console.log(animals);
-    res.render('animals/animals-add', {
+    res.render('animals/animals-edit', {
       documentTitle: 'Animal Awareness',
       animals: animals,
       type: 'edit',
+      value:req.body.content,
       id: req.params.id,
     });
   })
@@ -69,6 +70,8 @@ animalsController.update = (req, res) => {
     animal_type: req.body.animal_type,
     animal_pic_url: req.body.animal_pic_url,
     animal_info: req.body.animal_info,
+    content: req.body.content,
+    animals_id: req.body.animal_id,
   }, req.params.id)
   .then(animals => {
     res.redirect('/animals');

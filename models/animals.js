@@ -9,10 +9,10 @@ console.log('test2');
 Animals.findAll = () => {
   console.log('test3');
   return db.query(
-    `SELECT animals.id, animals.animal_type, animals.animal_pic_url, animals.animal_info, stories.content
+    `SELECT animals.id, animals.animal_type, animals.animal_pic_url, animals.animal_info, stories.content, stories.animals_id
     FROM animals
     JOIN stories 
-    ON animals.stories_id = stories.id`
+    ON animals.id = stories.animals_id`
   );
 };
 
@@ -20,21 +20,28 @@ Animals.findAll = () => {
 
 Animals.findById = (id) => {
   return db.oneOrNone(`SELECT * FROM animals INNER JOIN stories 
-  ON animals.stories_id = stories.id WHERE animals.id = $1;` , [id]);
+  ON animals.id = stories.animals_id WHERE animals.id = $1;` , [id]);
 };
 
 console.log('test4');
 
-Animals.create = (animals) => {
-  console.log(animals);
-  return db.one(
+Animals.create = (animal) => {
+  console.log(animal);
+   return db.one(
     `
       INSERT INTO animals
       (animal_type, animal_pic_url, animal_info)
-      VALUES ($1, $2, $3) RETURNING *
+      VALUES ($1, $2, $3) RETURNING *;
     `,
-    [animals.animal_type, animals.animal_pic_url, animals.animal_info]
-  );
+    [animal.animal_type, animal.animal_pic_url, animal.animal_info]
+  ).then(critter=>{
+    console.log('THIS IS THE CRITTER ->>>>',critter)
+    db.one(
+      `INSERT INTO stories (content, animals_id) 
+      VALUES ($1,$2) RETURNING *;`,
+      [animal.content, critter.id]
+    )
+  });
 };
 
 console.log('test5');
@@ -46,18 +53,22 @@ Animals.update = (animals, id) => {
       UPDATE animals SET
       animal_type = $1,
       animal_pic_url = $2,
-      animal_info = $3
-      WHERE id = $4
+      animal_info = $3,
+      content = $4, 
+      animals_id = $5,
+      WHERE id = $6
     `,
-    [animals.animal_type, animals.animal_pic_url, animals.animal_info, id]
+    [animals.animal_type, animals.animal_pic_url, animals.animal_info,stories.content, stories.animals_id, id]
   );
 };
 
 Animals.destroy = (id) => {
   return db.none(
     `
+      DELETE FROM stories
+      WHERE animals_id = $1;
       DELETE FROM animals
-      WHERE id = $1
+      WHERE id = $1;
     `,
     [id]
   );

@@ -1,29 +1,4 @@
 <% include ../partials/boilerplate %>
-<% if(type == 'edit') { %>
-<form class="addAnimalsForm" method='POST' action='/animals/<%= id %>?_method=PUT'>
-
-  <h2><%= type %> your Animal</h2>
-  <div class="form-group">
-    <label>Animal Type:</label>
-    <input name='animal_type' type='text' value='<%= animals.animal_type %>' />
-  </div>
-
- <div class="form-group">
-    <label>Enter a new image URL:</label> 
-    <input name='animal_pic_url' type='text' value='<%= animals.animal_pic_url %>' />
-  </div>
-  <div class="form-group">
-    <label>Add a story:</label> <br/>
-    <input type="text" name="fname" value='<%= stories.users %> ' /> <br>
-    <input type="submit" value="Submit">
-  </div>
-
-
-  <div class="form-group">
-    <input class="animalsFormSubmit" type='submit' value='Edit your animal!' />
-  </div>
-</form>
-<% } else { %>
   <form class="addAnimalsForm" method='POST' action='/animals'>
 
     <h2>Add an Animal</h2> 
@@ -33,13 +8,20 @@
       <input name='animal_type' type='text' />
     </div>
 
+    <div class="form-group">
+      <label>Enter some info about this here animal 🐻:</label> 
+      <input name='animal_info' type='text'  />
+  </div>
+
   <div class="form-group">
       <label>Enter a new image URL:</label> 
       <input name='animal_pic_url' type='text'  />
   </div>
-    
+    <label>Add a story:</label> <br/>
+    <input type="text" name="content" /> <br>
+    <input type="submit" value="Submit">
   </form>
 
-<% } %>
+
 <% include ../partials/end %>
 

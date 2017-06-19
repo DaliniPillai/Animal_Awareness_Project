@@ -1,7 +1,8 @@
 <% include ../partials/boilerplate %>
 
 <form class="addAnimalsForm" method='POST' action='/animals/<%= id %>?_method=PUT'>
-  <h2>Edit your Animal</h2>
+
+  <h2><%= type %> your Animal</h2>
   <div class="form-group">
     <label>Animal Type:</label>
     <input name='animal_type' type='text' value='<%= animals.animal_type %>' />
@@ -12,16 +13,15 @@
     <input name='animal_pic_url' type='text' value='<%= animals.animal_pic_url %>' />
   </div>
   <div class="form-group">
-  <label>Add a story :</label>
-    <br/>
-    <input type="text" name="fname"><br>
-    <input type="submit" value="Submit">
-   
-
-  <div class="form-group">
+    <label>Add a story:</label> <br/>
+    <input type="text" name="story" /> <br>
    
   </div>
-</form>
 
+
+  <div class="form-group">
+    <input class="animalsFormSubmit" type='submit' value='Edit your animal!' />
+  </div>
+</form>
 <% include ../partials/end %>
 

@@ -1,16 +1,11 @@
 \connect animal_awareness_development;
 
-DROP DATABASE IF EXISTS animal_awareness_development;
-CREATE DATABASE animal_awareness_development;
+-- DROP DATABASE IF EXISTS animal_awareness_development;
+-- CREATE DATABASE animal_awareness_development;
 DROP TABLE IF EXISTS stories;
 DROP TABLE IF EXISTS animals;
 
 
-CREATE TABLE stories(
-  id BIGSERIAL PRIMARY KEY,
-  content varchar(255) NOT NULL,
-  animals_id INTEGER REFERENCES animals(id) 
-);
 
 
 CREATE TABLE animals(
@@ -21,6 +16,11 @@ CREATE TABLE animals(
   
 );
 
+CREATE TABLE stories(
+  id BIGSERIAL PRIMARY KEY,
+  content varchar(255) NOT NULL,
+  animals_id INTEGER REFERENCES animals(id) 
+);
 
 
 
