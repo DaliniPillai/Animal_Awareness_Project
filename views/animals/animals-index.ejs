@@ -15,6 +15,13 @@
       <div class='edit'>
         <a class="buttonAnimalsLink" href='/animals/<%= animal.id %>'>Go to My Page</a>
         <a class="buttonAnimalsLink editMe" href='/animals/edit/<%= animal.id %>'>Edit Me!</a>
+        <br/>
+         <form class="addAnimalsForm" method='POST' action='/animals/story/<%=animal.id%>'>
+        <label>Add a story:</label> <br/>
+        <input type="text" name="content" /> <br>
+        <input type="submit" value="Submit">
+        </form>
+      
       </div>
       <form method='POST' action='/animals/<%= animal.id %>?_method=DELETE'>
       <div class=''>

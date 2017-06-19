@@ -21,6 +21,11 @@
         </div>
 </div>
       </form>
+      <br>
+      <h3>This is my story, my real ghetto story:</h3>
+      <%  stories.forEach(story=>{  %>
+        <p><%= story.content %></p>
+      <%  })  %>
 </div>
 
 <% include ../partials/end %>

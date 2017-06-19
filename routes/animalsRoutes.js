@@ -5,6 +5,7 @@ const animalsRoutes = express.Router();
 
 animalsRoutes.get('/', controller.index);
 animalsRoutes.post('/', controller.create);
+animalsRoutes.post('/story/:id', controller.story);
 animalsRoutes.get('/add', (req, res) => {
   res.render('animals/animals-add', {
     type: 'add',

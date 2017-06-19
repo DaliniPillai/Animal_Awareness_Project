@@ -9,18 +9,21 @@ console.log('test2');
 Animals.findAll = () => {
   console.log('test3');
   return db.query(
-    `SELECT animals.id, animals.animal_type, animals.animal_pic_url, animals.animal_info, stories.content, stories.animals_id
-    FROM animals
-    JOIN stories 
-    ON animals.id = stories.animals_id`
+    `SELECT *
+    FROM animals`
   );
 };
 
 
 
 Animals.findById = (id) => {
-  return db.oneOrNone(`SELECT * FROM animals INNER JOIN stories 
-  ON animals.id = stories.animals_id WHERE animals.id = $1;` , [id]);
+  return db.oneOrNone(`SELECT * FROM animals WHERE id = $1;` , [id]);
+};
+
+
+
+Animals.findStoryByAnimalId = (id) => {
+  return db.query(`SELECT * FROM stories WHERE animals_id=$1;` , [id]);
 };
 
 console.log('test4');
@@ -43,6 +46,17 @@ Animals.create = (animal) => {
     )
   });
 };
+
+Animals.story = story =>{
+  return db.one(
+    `
+      INSERT INTO stories
+      (content, animals_id)
+      VALUES ($1, $2) RETURNING *;
+    `,
+    [story.content, story.id]
+  )
+}
 
 console.log('test5');
 
