@@ -7,15 +7,17 @@ animalsRoutes.get('/', controller.index);
 animalsRoutes.post('/', controller.create);
 animalsRoutes.get('/add', (req, res) => {
   res.render('animals/animals-add', {
+    type: 'add',
     documentTitle: 'Animal Awareness',
   });
 });
 animalsRoutes.get('/:id', controller.show);
+//this runs edit
 animalsRoutes.put('/:id', controller.update);
 animalsRoutes.delete('/:id', controller.destroy);
 
-
-
+//this shows the edit form
 animalsRoutes.get('/edit/:id', controller.edit);
+
 
 module.exports = animalsRoutes;

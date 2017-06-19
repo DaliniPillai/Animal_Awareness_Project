@@ -48,8 +48,6 @@ app.use('/animals', animalsRoutes);
 
 
 
-
-
 /* handling 404 */
 app.get('*', function(req, res) {
   res.status(404).send({message: 'Oops! Not found.'});

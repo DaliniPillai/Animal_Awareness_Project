@@ -8,8 +8,8 @@ DROP TABLE IF EXISTS animals;
 
 CREATE TABLE stories(
   id BIGSERIAL PRIMARY KEY,
-  users varchar(255) NOT NULL,
-  content varchar(255) NOT NULL
+  content varchar(255) NOT NULL,
+  animals_id INTEGER REFERENCES animals(id) 
 );
 
 
@@ -17,8 +17,8 @@ CREATE TABLE animals(
   id BIGSERIAL PRIMARY KEY,
   animal_type VARCHAR(255),
   animal_pic_url VARCHAR(255),
-  animal_info VARCHAR(255),
-  stories_id INTEGER REFERENCES stories(id) 
+  animal_info VARCHAR(255)
+  
 );
 
 
