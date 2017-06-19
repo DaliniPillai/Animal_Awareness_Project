@@ -2,7 +2,7 @@
 
 <form class="addAnimalsForm" method='POST' action='/animals/<%= id %>?_method=PUT'>
 
-  <h2><%= type %> your Animal</h2>
+  <h2>Edit your Animal</h2>
   <div class="form-group">
     <label>Animal Type:</label>
     <input name='animal_type' type='text' value='<%= animals.animal_type %>' />
@@ -15,12 +15,11 @@
   <div class="form-group">
     <label>Add a story:</label> <br/>
     <input type="text" name="story" /> <br>
-   
   </div>
-
-
   <div class="form-group">
-    <input class="animalsFormSubmit" type='submit' value='Edit your animal!' />
+    <button class="btn waves-effect waves-light center">
+      <input class="animalsFormSubmit" type='submit' value='Edit your Animal!' />
+    </button>
   </div>
 </form>
 <% include ../partials/end %>

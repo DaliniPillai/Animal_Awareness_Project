@@ -19,16 +19,35 @@
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato" />
 
 
-
 </head>
 <body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $('.button-collapse').sideNav({
+        menuWidth: 300, // Default is 300
+        edge: 'right', // Choose the horizontal origin
+        closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+        draggable: true // Choose whether you can drag to open on touch screens
+      }
+    );
+    
+   </script>       
 
-<nav class='navBar'>
-  <ul>
-    <li><a href='/'>Home</a></li>
-    <li><a href='/animals'>Browse</a></li>
-    <li><a href="/animals/Add">Add an Animal</a></li>
-  </ul>
+<nav class='navBar' role="navigation">
+  <div class="nav-wrapper container">
+  <a id="logo-container" href="#" class="brand-logo">^.^ Animal Awarness</a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href='/animals'>Home</a></li>
+      <li><a href='/animals'>Browse</a></li>
+      <li><a href="/animals/Add">Add an Animal</a></li>
+    </ul>
+    <ul id="nav-mobile" class="side-nav">
+      <li><a href='/animals'>Home</a></li>
+      <li><a href='/animals'>Browse</a></li>
+      <li><a href="/animals/Add">Add an Animal</a></li>
+    </ul>
+    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+  </div>
 </nav>
 
 <div class="container">

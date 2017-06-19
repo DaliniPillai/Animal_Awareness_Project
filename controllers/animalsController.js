@@ -26,7 +26,8 @@ animalsController.show = (req, res) => {
       res.render('animals/animals-single', {
       documentTitle: 'Animal Awareness',
       animals: animals,
-      stories: stories
+      stories: stories,
+      animalsData: animals
       });
     })
   })

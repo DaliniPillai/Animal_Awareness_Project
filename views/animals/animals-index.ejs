@@ -1,11 +1,5 @@
 <% include ../partials/boilerplate %>
 
-<div class='add'>
-    <a class='addAnimalsLink' href='/animals'>Return to Animal index</a>
-</div>
-
-<br />
-
 <div class='container'>
     <div class="section">
         <div class="row">
@@ -25,29 +19,37 @@
                 <div class="spacer"></div>
                 <div class="center-align">
                   <a class="btn-large waves-effect waves-light green"  href='/animals/<%= animal.id %>'>
-                    Go to My Page
+                    Go to My Page 
                   </a>
                   <a class="btn-large waves-effect waves-light orange"  href='/animals/edit/<%= animal.id %>'>
-                    Edit Me!
+                    Edit Me
                   </a>
                 </div>
               </div> <!-- end of edit row -->
                 <p class="grey lighten-3 static-text black-text">
-                  <strong class="center">Add your story:</strong>
+                  <strong class="center">👉🏾 Add your story:</strong>
                 </p>
-                <div class="row">
-                <div class="input-field col s12">
-                  <form class="addAnimalStory" method='POST' action='/animals/story/<%=animal.id%>'>
-                    <input type="text" name="content" placeholder="Start writing your story here!" /> <br>
-                    <input type="submit" value="Submit">
-                  </form>
-                </div>
-                </div>
-              <form method='POST' action='/animals/<%= animal.id %>?_method=DELETE'>
-                <div class=''>
-                  <input class='deleteAnimals addAnimalslink'type='submit' value='Delete your Animal :(' />
-                </div>
-              </form>
+                <div class="row editAnimalButtons">
+                  <div class="input-field col s12">
+                    <form class="addAnimalStory" method='POST' action='/animals/story/<%=animal.id%>'>
+                      <i class="material-icons prefix">mode_edit</i>
+                      <input type="text" name="content" placeholder="Start writing your story here!" />
+                      <div class="row center">
+                        <button class="btn waves-effect waves-light center">
+                          <input type="submit" value="Submit">
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                  
+                  <div class='deleteAnimal row center'>                  
+                    <form method='POST' action='/animals/<%= animal.id %>?_method=DELETE'>
+                        <button class="btn waves-effect waves-light center red">
+                          <input class='deleteAnimals addAnimalslink'type='submit' value='Delete Your Animal 🙈' />
+                        </button>
+                    </form> 
+                  </div><!-- end of deleteAnimal -->                                     
+                </div> <!-- end of row editAnimalButtons-->  
             </div><!-- end of card -->
           </div> <!-- end of col s12 m6 l4 -->
           <% }) %>
